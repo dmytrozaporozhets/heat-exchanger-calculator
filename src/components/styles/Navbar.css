@@ -1,0 +1,16 @@
+.navbar {
+  display: flex;
+  gap: 20px;
+  padding: 10px 20px;
+  background-color: #282c34;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.nav-link.active {
+  border-bottom: 2px solid #61dafb;
+}
