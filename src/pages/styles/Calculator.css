@@ -1,0 +1,27 @@
+.calculator-container {
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.calculator-container h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #203a43;
+}
+
+.calculator-sections {
+  display: flex;
+  flex:1;
+  gap: 24px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.calculator-row {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+}
