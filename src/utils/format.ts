@@ -18,12 +18,31 @@ export function toSuperscriptExponent(exp: string): string {
 }
 
 export function formatScientific(value: number | string): string {
-  if (typeof value === 'string' && value.includes('e-')) {
-    const [mantissa, exponent] = value.split('e-');
+  const str =value.toString()
+  if (str.includes('e-')) {
+    const [mantissa, exponent] = str.split('e-');
     return `${mantissa}⋅10${toSuperscriptExponent('-' + exponent)}`;
   }
 
   return value.toString();
+}
+
+export function formatTrimmedNumber(value: number): string {
+  const fixed = value.toFixed(4);
+  return fixed.replace(/\.?0+$/, '');
+}
+
+export function parseInputsToNumbers(inputs: Record<string, any>): Record<string, number> {
+  const parsed: Record<string, number> = {};
+  for (const key in inputs) {
+    const val = inputs[key];
+    const num = typeof val === 'string' ? parseFloat(val) : val;
+    if (num === undefined || num === null || isNaN(num)) {
+      throw new Error(`Invalid or missing input: ${key}`);
+    }
+    parsed[key] = num!;
+  }
+  return parsed;
 }
 
 

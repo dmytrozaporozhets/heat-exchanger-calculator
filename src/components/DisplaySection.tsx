@@ -1,19 +1,11 @@
 import React from 'react';
 import './styles/DisplaySection.css';
 import { formatScientific } from '../utils/format';
-
-interface DisplayItem {
-  key: string;
-  label: string;
-  unit?: string;
-  value: number | string;
-  isScientific?:boolean
-}
-
+import { DataItem } from '../types/general';
 
 interface DisplaySectionProps {
   title: string;
-  data: DisplayItem[];
+  data: DataItem[];
 }
 
 const DisplaySection: React.FC<DisplaySectionProps> = ({ title, data }) => {
@@ -22,7 +14,8 @@ const DisplaySection: React.FC<DisplaySectionProps> = ({ title, data }) => {
     <section className="section-container">
       <h3>{title}</h3>
       {data.map(({ key, label, unit, value}) => {
-      const display = formatScientific(value);
+      if (!value) return null;
+      const display = formatScientific(value)
       return (
         <div key={key} className="input-row">
           <div className="input-label">
