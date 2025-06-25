@@ -1,5 +1,5 @@
-.section-container {
-  max-width: 500px;
+.section-init-container {
+  width: 400px;
   margin: 20px;
   padding: 30px;
   background: #f4f7f9;
@@ -8,7 +8,7 @@
   font-family: 'Segoe UI', sans-serif;
 }
 
-.section-container h3 {
+.section-init-container h3 {
   text-align: center;
   margin-bottom: 30px;
   color: #203a43;

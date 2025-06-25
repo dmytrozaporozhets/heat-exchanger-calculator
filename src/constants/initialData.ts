@@ -1,15 +1,15 @@
-import { A_ns, A_os, C_ns, c_ns, C_os, c_os, c_st, d_e, Du, f1, F1, k_st, Lpr, n1_ns, n1_os, n2_ns, n2_os, n3_ns, n3_os, δ_st, λ_ns, λ_os, λ_st, ν_ns, ν_os, ν_st, ρ_ns, ρ_os, ρ_st } from "./values";
+import { A_ns, A_os, C_ns, c_ns, C_os, c_os, c_st, d_e, Du, f1, F1, k_gr, k_st, Lpr, n1_ns, n1_os, n2_ns, n2_os, n3_ns, n3_os, w_ns, w_os, δ_st, λ_ns, λ_os, λ_st, ν_ns, ν_os, ν_st, ρ_ns, ρ_os, ρ_st } from "./values";
 
 export const initialData = [
-  { key: 't1_os', label: 'Начальная температура охлаждаемой среды', unit: '°C' },
-  { key: 't2_os', label: 'Конечная температура охлаждаемой среды', unit: '°C' },
-  { key: 't1_ns', label: 'Начальная температура нагреваемой среды', unit: '°C' },
-  { key: 't2_ns', label: 'Конечная температура нагреваемой среды', unit: '°C' },
-  { key: 'Q',    label: 'Тепловая нагрузка', unit: 'Вт' },
-  { key: 'dP_os', label: 'Допустимые потери давления по охлаждаемой среде', unit: 'Па' },
-  { key: 'dP_ns', label: 'Допустимые потери давления по нагреваемой среде', unit: 'Па' },
-  { key: 'X_os',  label: 'Количество ходов по охлаждаемой среде', unit: '' },
-  { key: 'X_ns',  label: 'Количество ходов по нагреваемой среде', unit: '' },
+  { key: 't1_os', label: 'Начальная температура охлаждаемой среды', unit: '°C',default:42 },
+  { key: 't2_os', label: 'Конечная температура охлаждаемой среды', unit: '°C',default:37  },
+  { key: 't1_ns', label: 'Начальная температура нагреваемой среды', unit: '°C',default:35  },
+  { key: 't2_ns', label: 'Конечная температура нагреваемой среды', unit: '°C',default:38.8  },
+  { key: 'Q',    label: 'Тепловая нагрузка', unit: 'Вт',default: 2459000  },
+  { key: 'dP_os', label: 'Допустимые потери давления по охлаждаемой среде', unit: 'Па',default: 60000 },
+  { key: 'dP_ns', label: 'Допустимые потери давления по нагреваемой среде', unit: 'Па',default: 100000 },
+  { key: 'X_os',  label: 'Количество ходов по охлаждаемой среде', unit: '',default: 1 },
+  { key: 'X_ns',  label: 'Количество ходов по нагреваемой среде', unit: '',default: 1 },
 ];
 
 export const plateData = [
@@ -176,3 +176,21 @@ export const thermalPropsData = [
   },
   
 ];
+
+export const otherData = [
+  { key: 'w_os', 
+    label: 'Средняя скорость охлаждаемой среды в каналах теплообменника',
+    unit: 'м/с', 
+    value: w_os 
+  },
+  { key: 'w_ns', 
+    label: 'Средняя скорость нагреваемой среды в каналах теплообменника',
+    unit: 'м/с', 
+    value: w_ns 
+  },
+  { key: 'k_gr', 
+    label:'Коэффициент теплового сопротивления загрязнений',
+    unit: '', 
+    value: k_gr 
+  },
+]

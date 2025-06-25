@@ -17,7 +17,7 @@ interface InputSectionProps {
 
 const InputSection: React.FC<InputSectionProps> = ({ title, data, values, onChange }) => {
   return (
-    <section className='section-container'>
+    <section className='section-init-container'>
       <h3>{title}</h3>
       {data.map(({ key, label, unit }) => (
         <InputRow
