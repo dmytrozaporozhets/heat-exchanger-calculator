@@ -1,9 +1,10 @@
 import React from 'react';
 import InputRow from '../components/InputRow';
 import './styles/InputSection.css';
+import { ThermalInput } from '../types/termal';
 
 interface InputItem {
-  key: string;
+  key: keyof ThermalInput; 
   label: string;
   unit?: string;
 }
@@ -11,20 +12,21 @@ interface InputItem {
 interface InputSectionProps {
   title: string;
   data: InputItem[];
-  values: Record<string, string | number>;
-  onChange: (key: string, value: string) => void;
+  values: Partial<ThermalInput>; 
+  onChange: (key: keyof ThermalInput, value: string) => void;
 }
 
 const InputSection: React.FC<InputSectionProps> = ({ title, data, values, onChange }) => {
   return (
-    <section className='section-init-container'>
+    <section className="section-init-container">
       <h3>{title}</h3>
       {data.map(({ key, label, unit }) => (
         <InputRow
+          key={key}
           fieldKey={key}
           label={label}
           unit={unit}
-          value={values[key]}
+          value={values[key] ?? ''} 
           onChange={(value: string) => onChange(key, value)}
         />
       ))}

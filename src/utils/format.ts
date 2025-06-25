@@ -32,4 +32,17 @@ export function formatTrimmedNumber(value: number): string {
   return fixed.replace(/\.?0+$/, '');
 }
 
+export function parseInputsToNumbers(inputs: Record<string, any>): Record<string, number> {
+  const parsed: Record<string, number> = {};
+  for (const key in inputs) {
+    const val = inputs[key];
+    const num = typeof val === 'string' ? parseFloat(val) : val;
+    if (num === undefined || num === null || isNaN(num)) {
+      throw new Error(`Invalid or missing input: ${key}`);
+    }
+    parsed[key] = num!;
+  }
+  return parsed;
+}
+
 

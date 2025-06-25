@@ -36,8 +36,11 @@
 .results-table td.center,
 .results-table th.center {
   text-align: center;
+  width:50px;
 }
 
 .results-table tr:nth-child(even) {
   background-color: #f5f8fa;
 }
+
+
