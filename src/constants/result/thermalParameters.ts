@@ -1,10 +1,6 @@
-interface ThermalParameter {
-  key: string;
-  label: string;
-  unit: string;
-}
+import { CalculationParameter } from "../../types/general";
 
-const thermalParameters: ThermalParameter[] = [
+const thermalParameters: CalculationParameter[] = [
   { key: 'dt_b', label: 'Разность температур по боковой линии', unit: '°C' },
   { key: 'dt_m', label: 'Средняя разность температур', unit: '°C' },
   { key: 'dt_sr_1', label: 'Среднелогарифмическая разность температур', unit: '°C' },
