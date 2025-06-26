@@ -1,6 +1,21 @@
 import { useState } from 'react';
 import { parseInputsToNumbers } from '../utils/format';
 
+import {
+  c_os, ν_os, ρ_os, λ_os,
+  c_ns, ν_ns, ρ_ns, λ_ns,
+  c_st, ν_st, ρ_st, λ_st,
+  w_os, w_ns, d_e,
+  A_os, A_ns,
+  n3_os, n3_ns,
+  n1_os, n1_ns,
+  C_ns, C_os,
+  n2_ns, n2_os,
+  k_st, k_gr,
+  f1, F1,
+  Lpr,
+} from '../constants/values';
+
 // Thermal
 import {
   dt_b, dt_m, dt_sr_1, t_os_sr, t_ns_sr, t_st,
@@ -14,35 +29,26 @@ import {
   zp,
 } from '../utils/thermalCalculations';
 
-import {
-  c_os, ν_os, ρ_os, λ_os,
-  c_ns, ν_ns, ρ_ns, λ_ns,
-  c_st, ν_st, ρ_st, λ_st,
-  w_os, w_ns, d_e,
-  A_os, A_ns,
-  n3_os, n3_ns,
-  n1_os, n1_ns,
-  C_ns, C_os,
-  n2_ns, n2_os,
-  k_st, k_gr,
-  f1, F1,
-} from '../constants/values';
-
 // Structural
 import {
   Fa, G_os, G_ns, f_p_os, f_p_ns,
   m_os, m_ns, n_channels,
   f_p_os_fact, f_p_ns_fact, Fa_fact
 } from '../utils/structuralCalculations';
+import {
+  w_os_h,
+  w_ns_h,
+  dP_os_h,
+  dP_ns_h,
+} from '../utils/hydromechanicalCalculations';
 
-import { ThermalInput } from '../types/termal';
-import { CombinedResults } from '../types/general';
+import { CalculationInput, CombinedResults } from '../types/general';
 
 export function useCombinedCalculations() {
   const [results, setResults] = useState<CombinedResults | null>(null);
   const [errors, setErrors] = useState<string[]>([]);
 
-  const calculate = (inputs: ThermalInput) => {
+  const calculate = (inputs: CalculationInput) => {
     setErrors([]);
     try {
       const parsed = parseInputsToNumbers(inputs);
@@ -94,6 +100,15 @@ export function useCombinedCalculations() {
       const f_p_ns_fact_val = f_p_ns_fact(f1, m_ns_val);
       const Fa_fact_val = Fa_fact(F1, n_val);
 
+      //Hydromechanical
+      const w_os_val = w_os_h(G_os_val, ρ_os, f_p_os_val);
+      const w_ns_val = w_ns_h(G_ns_val, ρ_ns, f_p_ns_val);
+
+      const dP_os_calc = dP_os_h(zeta_os_val, Lpr, d_e, ρ_os, w_os_val, X_os);
+      const dP_ns_calc = dP_ns_h(zeta_ns_val, Lpr, d_e, ρ_ns, w_ns_val, X_ns);
+  
+
+
       setResults({
         thermal: {
           dt_b: dtb,
@@ -131,6 +146,12 @@ export function useCombinedCalculations() {
           f_p_os_fact: f_p_os_fact_val,
           f_p_ns_fact: f_p_ns_fact_val,
           Fa_fact: Fa_fact_val,
+        },
+        hydromechanical:{
+          w_os_h: w_os_val,
+          w_ns_h: w_ns_val,
+          dP_os_h: dP_os_calc,
+          dP_ns_h: dP_ns_calc,
         }
       });
     } catch (error) {

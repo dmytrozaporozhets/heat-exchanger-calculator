@@ -28,7 +28,7 @@ export function formatScientific(value: number | string): string {
 }
 
 export function formatTrimmedNumber(value: number): string {
-  const fixed = value.toFixed(4);
+  const fixed = value.toFixed(3);
   return fixed.replace(/\.?0+$/, '');
 }
 
@@ -44,5 +44,10 @@ export function parseInputsToNumbers(inputs: Record<string, any>): Record<string
   }
   return parsed;
 }
+
+export function roundTo3(num: number): number {
+  return Number(num.toFixed(3));
+}
+
 
 
