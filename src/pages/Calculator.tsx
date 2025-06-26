@@ -7,13 +7,14 @@ import thermalPropsData from '../constants/init/thermalPropsData';
 import plateData from '../constants/init/plateData';
 import otherData from '../constants/init/otherData';
 import { initialData } from '../constants/init/initialData';
-import { ThermalInput } from '../types/termal';
 import './styles/Calculator.css';
 import structuralParameters from '../constants/result/structuralParameters';
 import { useCombinedCalculations } from '../hooks/useCombinedCalculations';
+import hydromechanicalParameters from '../constants/result/hydromechanicalParameters';
+import { CalculationInput } from '../types/general';
 
 const Calculator: React.FC = () => {
-  const [formValues, setFormValues] = useState<ThermalInput>({
+  const [formValues, setFormValues] = useState<CalculationInput>({
     t1_os: 42,
     t2_os: 37,
     t1_ns: 35,
@@ -37,7 +38,7 @@ const Calculator: React.FC = () => {
     }
   }, [results]);
 
-  const handleChange = (key: keyof ThermalInput, value: string) => {
+  const handleChange = (key: keyof CalculationInput, value: string) => {
     const numericValue = parseFloat(value);
     setFormValues(prev => ({
       ...prev,
@@ -51,11 +52,11 @@ const Calculator: React.FC = () => {
 
   const handleClear = () => {
     const clearedValues = initialData.reduce((acc, item) => {
-      acc[item.key as keyof ThermalInput] = typeof item.default === 'number'
+      acc[item.key as keyof CalculationInput] = typeof item.default === 'number'
         ? item.default
         : 0;
       return acc;
-    }, {} as ThermalInput);
+    }, {} as CalculationInput);
 
     setFormValues(clearedValues);
     clear();
@@ -117,6 +118,13 @@ const Calculator: React.FC = () => {
                 title="Конструктивный расчёт"
                 parameters={structuralParameters}
                 results={results.structural}
+              />
+            </div>
+            <div className="results-section">
+              <CalculationTable
+                title="Гидромеханический расчёт"
+                parameters={hydromechanicalParameters}
+                results={results.hydromechanical}
               />
             </div>
           </div>

@@ -1,10 +1,10 @@
 import React from 'react';
 import InputRow from '../components/InputRow';
 import './styles/InputSection.css';
-import { ThermalInput } from '../types/termal';
+import { CalculationInput } from '../types/general';
 
 interface InputItem {
-  key: keyof ThermalInput; 
+  key: keyof CalculationInput; 
   label: string;
   unit?: string;
 }
@@ -12,8 +12,8 @@ interface InputItem {
 interface InputSectionProps {
   title: string;
   data: InputItem[];
-  values: Partial<ThermalInput>; 
-  onChange: (key: keyof ThermalInput, value: string) => void;
+  values: Partial<CalculationInput>; 
+  onChange: (key: keyof CalculationInput, value: string) => void;
 }
 
 const InputSection: React.FC<InputSectionProps> = ({ title, data, values, onChange }) => {

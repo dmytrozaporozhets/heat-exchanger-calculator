@@ -127,6 +127,7 @@ export function Nu_ns(C_ns: number, Re_ns_val: number, n1_ns: number, n2_ns:numb
  * α_os = Nu_os * λ_os / d_e
  */
 export function alpha_os(Nu_os_val: number, lambda_os: number, d_e: number): number {
+  console.log('alpha_os',(Nu_os_val * lambda_os) / d_e)
   return (Nu_os_val * lambda_os) / d_e;
 }
 

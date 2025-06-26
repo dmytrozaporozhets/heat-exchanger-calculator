@@ -6,6 +6,26 @@ export interface DataItem {
   value?: number| string;
 }
 
+export interface CalculationInput {
+  t1_os: number;
+  t2_os: number;
+  t1_ns: number;
+  t2_ns: number;
+  Q: number;
+  dP_os: number;
+  dP_ns: number;
+  X_os: number;
+  X_ns: number;
+}
+
+export interface CalculationInputField {
+  key: keyof CalculationInput;
+  label: string;
+  unit?: string;
+  value?: number | null;
+  default?: number;
+}
+
 export interface CalculationParameter {
   key: string;
   label: string;
@@ -51,4 +71,10 @@ export interface CombinedResults {
     f_p_ns_fact: number;
     Fa_fact: number;
   };
+  hydromechanical:{
+    w_os_h: number;
+    w_ns_h: number;
+    dP_os_h: number;
+    dP_ns_h: number;
+  }
 }

@@ -1,12 +1,7 @@
-import { ThermalInput } from "../../types/termal";
+import { CalculationInputField } from "../../types/general";
 
-export const initialData: {
-  key: keyof ThermalInput;
-  label: string;
-  unit?: string;
-  value?: number | null;
-  default?: number;
-}[] = [
+
+export const initialData:CalculationInputField [] = [
   { key: 't1_os', label: 'Начальная температура охлаждаемой среды', unit: '°C', value: null },
   { key: 't2_os', label: 'Конечная температура охлаждаемой среды', unit: '°C', value: null },
   { key: 't1_ns', label: 'Начальная температура нагреваемой среды', unit: '°C', value: null },
