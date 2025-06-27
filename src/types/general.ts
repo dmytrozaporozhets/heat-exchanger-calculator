@@ -46,12 +46,12 @@ export interface CombinedResults {
     Pr_st: number;
     Re_os: number;
     Re_ns: number;
-    zeta_os: number;
-    zeta_ns: number;
+    ζ_os: number;
+    ζ_ns: number;
     Nu_os: number;
     Nu_ns: number;
-    alpha_os: number;
-    alpha_ns: number;
+    α_os: number;
+    α_ns: number;
     k_ch: number;
     k: number;
     w_os_1: number;

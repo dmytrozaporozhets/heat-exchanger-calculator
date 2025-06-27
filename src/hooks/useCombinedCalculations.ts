@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { parseInputsToNumbers } from '../utils/format';
+import { parseInputsToNumbers, roundTo3 } from '../utils/format';
 
 import {
   c_os, ν_os, ρ_os, λ_os,
@@ -21,9 +21,9 @@ import {
   dt_b, dt_m, dt_sr_1, t_os_sr, t_ns_sr, t_st,
   Pr_os, Pr_ns, Pr_st,
   Re_os, Re_ns,
-  zeta_os, zeta_ns,
+  ζ_os, ζ_ns,
   Nu_os, Nu_ns,
-  alpha_os, alpha_ns,
+  α_os, α_ns,
   k_ch, k_total,
   w_os_1, w_ns_1,
   zp,
@@ -70,20 +70,20 @@ export function useCombinedCalculations() {
       const re_os_val = Re_os(w_os, d_e, ν_os);
       const re_ns_val = Re_ns(w_ns, d_e, ν_ns);
 
-      const zeta_os_val = zeta_os(A_os, re_os_val, n3_os);
-      const zeta_ns_val = zeta_ns(A_ns, re_ns_val, n3_ns);
+      const ζ_os_val = ζ_os(A_os, re_os_val, n3_os);
+      const ζ_ns_val = ζ_ns(A_ns, re_ns_val, n3_ns);
 
       const nu_os_val = Nu_os(C_os, re_os_val, n1_os, n2_os, pr_os_val, pr_st_val);
       const nu_ns_val = Nu_ns(C_ns, re_ns_val, n1_ns, n2_ns, pr_ns_val, pr_st_val);
 
-      const alpha_os_val = alpha_os(nu_os_val, λ_os, d_e);
-      const alpha_ns_val = alpha_ns(nu_ns_val, λ_ns, d_e);
+      const α_os_val = α_os(nu_os_val, λ_os, d_e);
+      const α_ns_val = α_ns(nu_ns_val, λ_ns, d_e);
 
-      const kch = k_ch(alpha_os_val, k_st, alpha_ns_val);
-      const k = k_total(alpha_os_val, k_st, k_gr, alpha_ns_val);
+      const kch = k_ch(α_os_val, k_st, α_ns_val);
+      const k = k_total(α_os_val, k_st, k_gr, α_ns_val);
 
-      const w_os1 = w_os_1(k, dtsr, dP_os, c_os, t1_os, t2_os, ρ_os, zeta_os_val);
-      const w_ns1 = w_ns_1(k, dtsr, dP_ns, c_ns, t2_ns, t1_ns, ρ_ns, zeta_ns_val);
+      const w_os1 = w_os_1(k, dtsr, dP_os, c_os, t1_os, t2_os, ρ_os, ζ_os_val);
+      const w_ns1 = w_ns_1(k, dtsr, dP_ns, c_ns, t2_ns, t1_ns, ρ_ns, ζ_ns_val);
 
       const zp_val = zp(kch, k);
 
@@ -101,11 +101,11 @@ export function useCombinedCalculations() {
       const Fa_fact_val = Fa_fact(F1, n_val);
 
       //Hydromechanical
-      const w_os_val = w_os_h(G_os_val, ρ_os, f_p_os_val);
-      const w_ns_val = w_ns_h(G_ns_val, ρ_ns, f_p_ns_val);
+      const w_os_val = w_os_h(roundTo3(G_os_val), ρ_os, roundTo3(f_p_os_val));
+      const w_ns_val = w_ns_h(roundTo3(G_ns_val), ρ_ns, roundTo3(f_p_ns_val));
 
-      const dP_os_calc = dP_os_h(zeta_os_val, Lpr, d_e, ρ_os, w_os_val, X_os);
-      const dP_ns_calc = dP_ns_h(zeta_ns_val, Lpr, d_e, ρ_ns, w_ns_val, X_ns);
+      const dP_os_calc = dP_os_h(roundTo3(ζ_os_val), Lpr, d_e, ρ_os, roundTo3(w_os_val), X_os);
+      const dP_ns_calc = dP_ns_h(roundTo3(ζ_ns_val), Lpr, d_e, ρ_ns, roundTo3(w_ns_val), X_ns);
   
 
 
@@ -122,12 +122,12 @@ export function useCombinedCalculations() {
           Pr_st: pr_st_val,
           Re_os: re_os_val,
           Re_ns: re_ns_val,
-          zeta_os: zeta_os_val,
-          zeta_ns: zeta_ns_val,
+          ζ_os: ζ_os_val,
+          ζ_ns: ζ_ns_val,
           Nu_os: nu_os_val,
           Nu_ns: nu_ns_val,
-          alpha_os: alpha_os_val,
-          alpha_ns: alpha_ns_val,
+          α_os: α_os_val,
+          α_ns: α_ns_val,
           k_ch: kch,
           k: k,
           w_os_1: w_os1,

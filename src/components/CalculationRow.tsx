@@ -1,5 +1,5 @@
 import React from 'react';
-import { formatTrimmedNumber } from '../utils/format';
+import {roundTo3 } from '../utils/format';
 
 interface CalculationRowProps {
   label: string;
@@ -12,7 +12,7 @@ const CalculationRow: React.FC<CalculationRowProps> = ({ label, symbol, value, u
   <tr>
     <td>{label}</td>
     <td className="center">{symbol}</td>
-    <td className="center">{formatTrimmedNumber(value)}</td>
+    <td className="center">{roundTo3(value)}</td>
     <td className="center">{unit}</td>
   </tr>
 );

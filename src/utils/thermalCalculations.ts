@@ -94,7 +94,7 @@ export function Re_ns(w_ns: number, d_e: number, nu_ns: number): number {
  * Коэффициент общего гидравлического сопротивления по охлаждаемой среде
  * ζ_os = A_os / (Re_os^n3_os)
  */
-export function zeta_os(A_os: number, Re_os_val: number, n3_os: number): number {
+export function ζ_os(A_os: number, Re_os_val: number, n3_os: number): number {
   return A_os / Math.pow(Re_os_val, n3_os);
 }
 
@@ -102,7 +102,7 @@ export function zeta_os(A_os: number, Re_os_val: number, n3_os: number): number 
  * Коэффициент общего гидравлического сопротивления по нагреваемой среде
  * ζ_ns = A_ns / (Re_ns^n3_ns)
  */
-export function zeta_ns(A_ns: number, Re_ns_val: number, n3_ns: number): number {
+export function ζ_ns(A_ns: number, Re_ns_val: number, n3_ns: number): number {
   return A_ns / Math.pow(Re_ns_val, n3_ns);
 }
 
@@ -126,8 +126,7 @@ export function Nu_ns(C_ns: number, Re_ns_val: number, n1_ns: number, n2_ns:numb
  * Коэффициент теплоотдачи по охлаждаемой среде
  * α_os = Nu_os * λ_os / d_e
  */
-export function alpha_os(Nu_os_val: number, lambda_os: number, d_e: number): number {
-  console.log('alpha_os',(Nu_os_val * lambda_os) / d_e)
+export function α_os(Nu_os_val: number, lambda_os: number, d_e: number): number {
   return (Nu_os_val * lambda_os) / d_e;
 }
 
@@ -135,7 +134,7 @@ export function alpha_os(Nu_os_val: number, lambda_os: number, d_e: number): num
  * Коэффициент теплоотдачи по нагреваемой среде
  * α_ns = Nu_ns * λ_ns / d_e
  */
-export function alpha_ns(Nu_ns_val: number, lambda_ns: number, d_e: number): number {
+export function α_ns(Nu_ns_val: number, lambda_ns: number, d_e: number): number {
   return (Nu_ns_val * lambda_ns) / d_e;
 }
 
