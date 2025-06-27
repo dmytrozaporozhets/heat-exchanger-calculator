@@ -31,7 +31,68 @@ Ideal for engineering applications, heat transfer analysis, and educational purp
 
 ## 🛠 Getting Started
 
-### 1. Install dependencies
+## 📦 1. Install dependencies
 
 ```bash
 npm install
+```
+
+---
+
+## ▶️ 2. Run the app
+
+```bash
+npm start
+```
+
+Then open [http://localhost:3000](http://localhost:3000) in your browser.  
+The page will reload if you make edits.
+
+---
+
+## 🧪 3. Run tests
+
+```bash
+npm test
+```
+
+---
+
+## 🏗️ 4. Build for production
+
+```bash
+npm run build
+```
+
+Creates an optimized production-ready build in the `build` directory.
+
+---
+
+## 🗂 Project Structure (simplified)
+
+```
+src/
+├── components/              // UI components: InputSection, DisplaySection, CalculationTable
+├── constants/               // Built-in values for fluids, plates, assumptions
+│   ├── init/                // Initial input and default data
+│   └── result/              // Parameter definitions for display
+├── hooks/                   // useCombinedCalculations() logic hook
+├── types/                   // Type definitions
+├── utils/                   // All calculation logic (thermal, structural, hydromechanical)
+└── App.tsx / Calculator.tsx
+```
+
+---
+
+## 📚 Documentation
+
+- React: [https://reactjs.org/](https://reactjs.org/)  
+- Create React App: [https://create-react-app.dev/docs/getting-started/](https://create-react-app.dev/docs/getting-started/)
+
+---
+
+## 📜 License
+
+This project is open for educational, research, and engineering use.  
+Feel free to modify or expand the logic and UI as needed.
+
