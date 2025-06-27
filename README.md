@@ -1,39 +1,37 @@
 # Heat Exchanger Calculator
 
-This web application calculates heat exchanger parameters for heating systems.
-
-## Getting Started
-
-In the project directory, you can run:
-
-### `npm install`
-
-Installs all project dependencies.
-
-### `npm start`
-
-Runs the app in development mode.  
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.  
-The page will reload if you make edits.
-
-### `npm test`
-
-Launches the test runner in interactive watch mode.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.  
-It correctly bundles React in production mode and optimizes the build for best performance.
+A web application for performing detailed **thermal**, **structural**, and **hydromechanical** calculations of a plate heat exchanger.  
+Ideal for engineering applications, heat transfer analysis, and educational purposes.
 
 ---
 
-## Documentation
+## 🧠 Key Features
 
-- React documentation: [https://reactjs.org/](https://reactjs.org/)  
-- Create React App documentation: [https://create-react-app.dev/docs/getting-started/](https://create-react-app.dev/docs/getting-started/)
+- 🔥 **Thermal calculations**:  
+  Includes temperature differences, Prandtl, Reynolds, Nusselt numbers, heat transfer coefficients, and total heat transfer.
+
+- 🧱 **Structural calculations**:  
+  Calculates effective area, flow rates, cross-sectional areas, number of channels, and geometric characteristics of the plate pack.
+
+- 💧 **Hydromechanical calculations** (new):  
+  Computes flow velocities and hydraulic resistances based on actual medium properties and geometry.
+
+- 📊 **Clean UI with grouped sections**:  
+  Inputs, constants, and result tables are well organized by category.
+
+- 🔁 **Reusability**:  
+  Universal formula logic separated from formatting, allowing accurate scientific outputs and unit-safe calculations.
+
+- 🌡️ **Built-in constants**:  
+  Includes plate properties, thermal characteristics of water, and preset assumptions.
+
+- ✅ Rounds all final results to 3 significant decimal digits (when necessary).
 
 ---
 
-## License
+## 🛠 Getting Started
 
-This project is open for use and modification.
+### 1. Install dependencies
+
+```bash
+npm install
